@@ -29,4 +29,18 @@ S = 'spam'
 S[0], S[1:3], S[3]
 '''
 
+##Экранирование последовательности
+'''
+\a
+\b
+\'
+\\
+\n
+\f
+
+path = r'C:\Users\Здравствуйте господи\Desktop\Новая папка\data.txt'
+print(path)
+
+print('try to {0} the {1}'.format('format', 'strings'))
+'''
 
