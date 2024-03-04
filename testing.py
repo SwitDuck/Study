@@ -28,3 +28,18 @@ X[1]='surprise'
 print(L)
 print(D)
 '''
+'''while True:
+    reply = input('enter text:')
+    if reply == 'stop': break
+    try:
+        num = int(reply)
+    except:
+        print('bad'*8)
+    else:
+        print(int(reply)**2)
+print('bye')'''
+
+
+'''x,y,z = 'параметры', 'установки', 'windows'
+print(x,y,z, sep=', ', end='!\n', file=open('data.txt', 'w'))
+print(open('data.txt').read())'''
