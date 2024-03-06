@@ -21,6 +21,8 @@ while y < 0.5:
     y+=0.02
 
 '''
+
+'''
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -43,5 +45,26 @@ plt.plot(y_values, equal_values)
 plt.xlabel('Значения y')
 plt.ylabel('Значения W')
 plt.title('График функции W(y) при x=1')
+plt.grid(True)
+plt.show()
+'''
+
+import math as m
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = 1.25; y = 0.7*m.pi; ym = []; T = []
+while (y <= 0.95*m.pi):
+    ch1 = (m.sin(y)+m.sin(2*y)+m.sin(3*y))**4
+    ch2 = m.sin(y)+m.sin(2*y)+m.sin(3*y)
+    ch3 = 1 + m.exp(x)
+    T.append((ch1 / (1+(ch2/ch3))))
+    y +=0.001*m.pi
+    ym.append(y)
+
+plt.plot(ym, T)
+plt.xlabel('Значения y')
+plt.ylabel('Значения T')
+plt.title('График функции T(y) при x=1.25')
 plt.grid(True)
 plt.show()
