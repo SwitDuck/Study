@@ -287,3 +287,52 @@ while <test1>:
 else:
     <statements2>
 '''
+#for
+'''
+циклы удобно использовать там где надо повторно выполнять некоторые действия или обрабатывать
+данные. Вот пример посимвольного чтения.
+file = open('test.txt')
+while True:
+    char = file.read(1)
+    if not char: break
+    print(char)
+for char in open('test.txt').read()
+    print(char)
+Чтение строками или блоками
+file = open('test.txt')
+while True:
+    line = file.readline()
+    if not line:break
+    print(line, end=' ')
+file.close
+
+file = open('test.txt', 'rb')
+while True:
+    chunk = file.read(10)
+    if not chunk: break
+    print(chunk)
+
+'''
+#Функция range
+'''
+Один аргумент генерирует список от нуля до указанного(не включая его), два аргумента
+первый будет как нижняя граница а второй как верхняя, третий аргумент - шаг.
+например значения в порядке убывания с шагом -1, list(range(5,-5,-1))
+
+Управление индексами вручную в цикле for:
+x = 'spam'
+len(x)
+list(range(len(x)))
+for i in range(len(x)): print(x[i], end=' ')
+здесь выполняется обход списка смещений в строке x, а не фактических элементов строки.
+
+Обход части последовательности - range и срезы
+например выбор каждой второй строки при обходе списка значений сгенерированных range
+S = 'abcdefghijk'
+list(range(0, len(S), 2))
+for i in range(0, len(S), 2): print(S[i], end=' ')
+
+Но все же лучшим способом будет срез следующего вида
+S = 'abcdefghijk'
+for c in S[::2]: print(c, end=' ')
+'''

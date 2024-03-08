@@ -43,3 +43,39 @@ print('bye')'''
 '''x,y,z = 'параметры', 'установки', 'windows'
 print(x,y,z, sep=', ', end='!\n', file=open('data.txt', 'w'))
 print(open('data.txt').read())'''
+#пример использования else в цикле while
+'''y = 4
+x = y // 2
+while x > 1:
+    if y % x == 0:
+        print(y, 'has factor', x)
+        break
+    x -= 1
+else:
+    print(y, 'is prime')'''
+'''import re as r
+found = False; x = [5,1,4,12,8,7,3,24]
+while x and not found:
+    if r.match(x[0]):
+        print('Ni')
+        found = True
+    else:
+        x = x[1:]
+if not found:
+    print('not found')
+
+while x:
+    if r.match(x[0]):
+        x = x[1:]
+else:
+    print('not found')'''
+'''file = open('data1.txt', 'rb')
+while True:
+    chunk = file.read(10)
+    if not chunk: break
+    print(chunk)
+file.close()'''
+
+'''S = 'abcdefghijk'
+list(range(0, len(S), 2))
+for i in range(0, len(S), 2): print(S[i], end=' ')'''
