@@ -336,3 +336,12 @@ for i in range(0, len(S), 2): print(S[i], end=' ')
 S = 'abcdefghijk'
 for c in S[::2]: print(c, end=' ')
 '''
+
+#обход нескольких последовательностей параллельно
+'''
+L1 = []; L2 = []
+list(zip(L1,L2))
+
+for (x, y) in zip(L1, L2):
+    print(x, y, '--', x+y)
+'''
