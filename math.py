@@ -49,6 +49,7 @@ plt.grid(True)
 plt.show()
 '''
 
+'''
 import math as m
 import matplotlib.pyplot as plt
 import numpy as np
@@ -68,3 +69,16 @@ plt.ylabel('Значения T')
 plt.title('График функции T(y) при x=1.25')
 plt.grid(True)
 plt.show()
+'''
+from scipy.stats import f
+# Задаем степени свободы
+dfn = 0.6  # Число степеней свободы в числителе
+dfd = float('inf')  # Число степеней свободы в знаменателе (бесконечность)
+
+# Находим значение квантили для распределения Фишера
+quantile_f = f.ppf(0.6, dfn, dfd)
+
+# Умножаем на 2, чтобы получить 2 * F(0.6, inf)
+result = 2 * quantile_f
+
+print("Значение 2 * F(0.6, inf):", result)

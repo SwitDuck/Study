@@ -345,3 +345,32 @@ list(zip(L1,L2))
 for (x, y) in zip(L1, L2):
     print(x, y, '--', x+y)
 '''
+#Генерирование индексов и элементов с помощью enumerate
+'''
+Традиционный способ получения индекса
+x = 'spam'; offset = 0
+for item in x:
+    print(item, 'appears at offset', offset)
+    offset += 1
+способ с помощью enumerate
+X = 'spam'
+for (offset, item) in enumerate(X):
+    print(item, 'appears at offset', offset)
+
+enumerate возвращает объект-генератор,имеет метод __next__, вызываемый встроенной функцией 
+next и возвращающий кортеж (index, value) для каждого элемента списка. 
+Мы можем использовать эти кортежи для присваивания в цикле for
+[c * i for (i, c) in enumerate(S)]
+'''
+
+#Итераторы и генераторы
+'''
+протокол итераций, реализует метод __next__, который возвращает следующее значение и возбуждает
+исключение stopiteration в конце серии результатов.
+f = open('file.py')
+f.__next__()
+функция next(x) равносильна методу __next__
+f = open('file.py')
+next(f)
+
+'''
