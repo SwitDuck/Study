@@ -79,3 +79,42 @@ file.close()'''
 '''S = 'abcdefghijk'
 list(range(0, len(S), 2))
 for i in range(0, len(S), 2): print(S[i], end=' ')'''
+'''
+L = [1,2,3]
+I = iter(L)
+print(I.__next__())'''
+
+'''
+L = [1,2,3]
+for X in L:
+    print(X**2, end=' ')
+
+I = iter(L)
+while True:
+    try:
+        X = next(I)
+    except StopIteration:
+        break
+    print(X**2, end=' ')
+'''
+
+'''
+D = {'a':1,'b':2,'c':3}
+for key in D.keys():
+    print(key,D[key])
+'''
+'''
+D = {'a':1,'b':2,'c':3}
+#for key in D.keys():
+#    print(key,D[key])
+I = iter(D)
+print(next(I))
+print(next(I))
+print(next(I))
+E = enumerate('spam')
+print(E)
+I = iter(E)
+print(next(I))
+l1 = list(enumerate('spam'))
+print(l1)
+'''
