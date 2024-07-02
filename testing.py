@@ -118,3 +118,16 @@ print(next(I))
 l1 = list(enumerate('spam'))
 print(l1)
 '''
+
+'''
+#функции итерации для вычисления
+#max и min работают и для файлов и для строк для нахождения наиб и наим колво символов
+print(
+sum([6, 1, -5, 3, 10, -2]),
+max([6, 1, -5, 3, 10, -2]),
+min([6, 1, -5, 3, 10, -2]),
+any(['spam', '', 'ni']),
+all(['spam', '', 'ni'])
+)'''
+
+#{ix: line for (ix, line) in enumerate(open('script1.py')) if line[0]=='p'}

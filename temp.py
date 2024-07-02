@@ -384,4 +384,17 @@ for key in D.keys():
 lines = [line.rstrip() for line in open('script1.py')]
 Более сложный пример работы с данными
 [('sys' in line, line[0]) for line in open('script1.py)]
+Добавление проверки при генерации списка
+lines = [line.rstrip() for line in open('script1.py') if line[0] == 'p']
+Содержащие вложенные циклы 
+[x + y for x in 'abc' for y in 'lmn'] #синтаксис допускает использовать люб колво операторов
+
+Интересно что любые инструменты выполняющие обход слева направо используют итерационый протокол по определению при работе с обьектами
+например:
+list(open('script1.py'))
+'&&'.join(open('script1.py'))
+
+Итераторы представлений словарей
+D = dict(a=1. b=2, c=3)
+K = D.keys()
 '''
