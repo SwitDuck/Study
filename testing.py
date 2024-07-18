@@ -131,3 +131,6 @@ all(['spam', '', 'ni'])
 )'''
 
 #{ix: line for (ix, line) in enumerate(open('script1.py')) if line[0]=='p'}
+
+import string
+print(dir(string))
