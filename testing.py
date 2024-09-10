@@ -130,7 +130,61 @@ any(['spam', '', 'ni']),
 all(['spam', '', 'ni'])
 )'''
 
+'''
 #{ix: line for (ix, line) in enumerate(open('script1.py')) if line[0]=='p'}
 
 import string
 print(dir(string))
+'''
+
+'''
+#что то непонятное
+text = "slovo"
+new_text = ''
+sum = 0
+for i in text:
+    new_text+=str(ord(i))
+    sum += ord(i)
+print(new_text)
+print(sum)
+map(ord, )
+'''
+'''
+var = 99
+def local():
+    var = 0
+def glob1():
+    global var
+    var += 1
+def glob2():
+    var = 0
+    import testing
+    testing.var += 1
+def glob3():
+    var = 0
+    import sys
+    glob = sys.modules['testing']
+def test():
+    print(var)
+    local(); glob1(); glob2(); glob3();
+    print(var)
+test()'''
+
+'''
+def clovar(**kwargs):
+    for name, value in kwargs.items():
+        print(name,value)
+clovar(value1=1, value2=2, value3=3)
+mydict = {'foo':1,'bar':2}
+clovar(**mydict)'''
+
+'''def edition():
+    x=10
+    def edit():
+        X = 20
+        nonlocal x 
+        x+=10
+        print(x)
+        return X
+    return edit()
+print(edition())'''
