@@ -635,3 +635,31 @@ def func(a,b,c,d):print(a,b,c,d)
 func(**args)
 ТО ЕСТЬ РАЗНИЦА В ТОМ ЧТО * - ПОЗИЦИОННЫЕ(очередь), ** - КЛЮЧЕВЫЕ АРГУМЕНТЫ(явно с именами);
 '''
+
+'''
+yield python3.3
+возможность делегирования работы подгенератору с помощью конструкции from генератор:
+def both(N):
+    for i in range(N): yield i
+    for i in (x**2 for x in range(N)) : yield i
+list(both(5))
+def both2(N):
+    yield from range(N)
+    yield from(x**2 for x in range(N))
+list(both2(5))
+'''
+'''
+Библиотечные средства
+Модуль os
+стандартный инструмент прохода по ка­талогам, который на каждом уровне дерева каталогов выдает кортеж с текущим ката­логом,
+ его подкаталогами и имеющимися файлами
+import os
+for (root, subs, files) in os.walk('.'):
+    for name in files:
+        if name.startswith('call'):
+            print(root, name)
+На самом деле os.walk в Python реализована как рекурсивная функция она является нормальной генераторной функцией и потому итерируемым объектом
+G = os.walk(r'C:\code\pkg')
+I = iter(G)
+next(I)
+'''

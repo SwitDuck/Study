@@ -136,6 +136,12 @@ print(multiply(6))
 Напиши функцию increase_counter() которая увеличивает глобальную переменную counter на 1 при каждом вызове. 
 Покажи, как обновляется значение counter при многократных вызовах функции.
 '''
+'''
+global_var = ''
+def update_global_var():
+    global global_var; global_var = 'updated'
+update_global_var()
+'''
 
 #Reduce
 '''
@@ -145,6 +151,23 @@ print(multiply(6))
 Напиши функцию product_list(numbers) которая принимает список чисел и возвращает их произведение, используя reduce и функцию lambda.
 3. Нахождение максимального числа с использованием reduce
 Реализуй функцию max_list(numbers) которая находит и возвращает максимальное число в списке, используя reduce и функцию lambda.
+'''
+'''
+import functools as f
+def sum_list(numbers):
+    return f.reduce(lambda x,y:x+y, numbers)
+def product_list(numbers):
+    return f.reduce(lambda x,y: x*y, numbers)
+def max_list(numbers):
+    return f.reduce(lambda x,y: x if x>y else y, numbers)
+#Решение chatgpt
+import operator
+def max_list(numbers):
+    return f.reduce(max, numbers)
+def product_list(numbers):
+    return f.reduce(operator.mul, numbers)
+def sum_list(numbers):
+    return f.reduce(operator.add, numbers)
 '''
 
 #Filter
@@ -159,6 +182,13 @@ print(multiply(6))
 Напиши функцию filter_positive(numbers) которая возвращает список только положительных чисел из переданного списка,
  используя filter и lambda.
 '''
+'''
+def filter_long_words(words, n):
+    return list(filter(lambda x : len(x)>n, words))
+def filter_even_numbers(numbers):
+    return list(filter(lambda x : x%2==0, numbers))
+def filter_positive(numbers):
+    return list(filter(lambda x: x>0, numbers))'''
 
 #Map
 '''
@@ -172,6 +202,12 @@ print(multiply(6))
 Реализуй функцию format_numbers(numbers) которая принимает список чисел и возвращает список строк с числовыми значениями,
  отформатированными до двух знаков после запятой, используя map и lambda.
 '''
+'''def to_uppercase(words):
+    return list(map(lambda x: x.upper(), words))
+def square_roots(numbers):
+    return list(map(lambda x: x**(1/2), numbers))
+def format_numbers(numbers):
+    return list(map(lambda x: '{:.2f}'.format(x), numbers))'''
 
 #Yield
 '''
@@ -183,4 +219,21 @@ print(multiply(6))
 3. Генератор квадратов чисел
 Реализуй генератор squares(start, end) который возвращает квадраты чисел от start до end, 
 используя yield для генерации каждого квадрата.
+'''
+'''
+def fibonacci():
+    a, b = 0, 1  # Первые два числа Фибоначчи
+    while True:
+        yield a
+        a, b = b, a + b
+x = fibonacci()
+for _ in range(10):
+    print(next(x))
+def even_numbers(n):
+    for i in range(1,n):
+        if i %2 ==0:
+            yield i
+def squares(start, end):
+    for i in range(start, end):
+        yield i**2
 '''
