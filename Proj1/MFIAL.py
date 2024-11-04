@@ -1,11 +1,14 @@
 import subprocess as sub
 def user_add():
     def first():
-        while input != "exit":
+        while True:
             print("имя пользователя - \nвведите exit чтобы вернуться назад")
-            print("")
-            def set_mandatory_level()
-            
+            coma = input("Ввод: ")
+            if coma == "exit":
+                user_add()
+            else:
+                print(coma)
+          
     def second():
         print('second')
     print("Выберите параметр который хотите выполнит \n1)Добавление пользователя \n2)Модификация пользователя \n3)Назад")
