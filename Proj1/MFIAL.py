@@ -1,111 +1,23 @@
-'''import subprocess as sub
-# Исходный словарь с параметрами команды
-command_list = {
-    'useradd': [
-        'useradd',  # Основная команда
-        '-b — базовый каталог',
-        '-d — домашний каталог',
-        '-e — дата блокировки учётной записи',
-        '-f — блокировка после создания',
-        '-g — группа пользователя',
-        '-p — пароль пользователя',
-        '-u — идентификатор пользователя'
-    ],
-    'pdpl-user': [
-        'pdpl-user',
-        '-l',
-        '-i',
-        '-c',
-        '-d',
-        '-z'
-    ],
-    'pdpl-file': [
-        'pdpl-file',
-        ''
-    ]
-}
-def check(vvod):
-    if vvod == 'exit':
-        main()
-        return True
-
-def main():
-    def create_user():
-        while True:
-            if input("Введите exit чтобы вернуться назад: \nНажмите enter чтобы продолжить ") == "exit":
-                    main()
-                    break
-            # Начинаем формирование команды с основного имени пользователя
-            command_with_params = ['useradd']
-            
-            # Определяем список параметров и их запросов
-            user_add_params = [
-                ('Базовый каталог: ', '-b'),
-                ('Домашний каталог: ', '-d'),
-                ('Дата блокировки учётной записи (дд:мм:гг): ', '-e'),
-                ('Блокировать учётную запись после создания? (y/n): ', '-f'),
-                ('Группа пользователя: ', '-g'),
-                ('Пароль пользователя: ', '-p'),
-                ('Идентификатор: ', '-u')
-            ]
-            
-            # Перебираем параметры и запрашиваем ввод
-            for i, (prompt, flag) in enumerate(user_add_params):
-                
-                user_input = input(prompt)
-                if check(user_input)==True:
-                    break    
-                # Если параметр должен быть пропущен
-                if not user_input:
-                    print(f"Параметр '{flag}' пропущен.")
-                    continue
-
-                # Обработка специального параметра '-f'
-                if i == 3:  # Если это параметр блокировки
-                    if user_input.lower() == 'y':
-                        command_with_params.append(flag)  # Добавляем только флаг без значения
-                    elif user_input.lower() == 'n':
-                        print(f"Параметр '{flag}' пропущен.")
-                    continue
-
-                # Добавляем флаг и значение параметра
-                command_with_params.extend([flag, user_input])
-            print("Введите имя пользователя:")
-            user_name = input("Ввод: ")
-            command_with_params.extend([user_name])
-            # Вывод собранной команды перед выполнением
-            print("Выполняем команду:", " ".join(command_with_params))
-
-            # Выполнение команды
-            try:
-                print(" ".join(command_with_params))
-                #sub.run(command_with_params)
-            except Exception as e:
-                print(f"Ошибка при выполнении команды: {e}")
-                
-    # Основное меню функции
-    def user_modify():
-        print('modify')
-    def mandatory_manage():
-        print('manage')
-    print("Выберите параметр который хотите выполнит \n1)Добавление пользователя \n2)Модификация пользователя \n3)Назад")
-    while True:
-        try:
-            x = int(input("ввод: "))
-            if x == 1:
-                create_user()
-            elif x == 2:
-                user_modify()
-            elif x == 3:
-                mandatory_manage()
-            else: return
-            break
-        except ValueError:
-            print("Введите цифру 1-2")
-main()'''
-
 import subprocess as sub
+class file_manager():
+    def search(directory):
+        with open(directory, "r", encoding="unicode-escape") as file:
+            lines = file.readlines()
+            ...
+    ...
+'''
+from contextlib import redirect_stdout
+f = io.StringIO()
 
+try:
+    with redirect_stdout(f):
+        exec(workplace.get(0.0, END))
+        label1.configure(text=f.getvalue())
+
+except Exception as e:
+    em = traceback.format_exc()
+    label1.configure(text=traceback.format_exc())
+'''
 # Словарь с параметрами команд
 command_list = {
     'useradd': [
@@ -245,6 +157,7 @@ def main():
 
                 print("Выполняем команду:", " ".join(pdpl_file_command))
                 # sub.run(pdpl_file_command)
+                sub.run()
 
             elif choice == "3":
                 # Работа с usercat
