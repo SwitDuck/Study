@@ -17,9 +17,15 @@ class math_functions():
 
         ...
 
-    def Feistel(rounds):
+    def Feistel(rounds, S_block):
         def linear():
             ...
-        def non_linear():
-            ...
-        ...
+        def non_linear(S_block):
+            hex_s_block = []
+            for i in S_block:
+                hex_s_block.append(hex(i))
+            return hex_s_block
+        return non_linear(S_block)
+    for i in Feistel(4, S_block):
+        print(i)
+            
