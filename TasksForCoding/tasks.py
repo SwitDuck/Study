@@ -343,15 +343,130 @@ class FlexibleDict1(dict):
 то его элементы добавляются по отдельности, а не как один элемент.
 Например, fl.append([10, 20, 30]) должно добавить в список fl три числа: 10, 20, 30, а не сам список [10, 20, 30].
 Для проверки, является ли объект итерируемым, можно использовать встроенную функцию iter().'''
+'''
 class StringKeyDict(dict):
+    def __setitem__(self, key, value):
+        """Сохраняет значение с ключом в виде строки"""
+        super().__setitem__(str(key), value)
     def __getitem__(self, key):
-        try:
-          alt_key = str(key)
-          return super().__getitem__(alt_key)
-        except ValueError:
-          print('An exception occurred')
-        return super().__getitem__(key)
-a = StringKeyDict()
-a[1] = 10
-print(a['1'])
+        """Получает значение по ключу, преобразованному в строку"""
+        return super().__getitem__(str(key))
+class RecentDict(dict):
+   def __setitem__(self, key, value):
+        if len(self) >= 5:
+            self.pop(next(iter(self)))
+        return super().__setitem__(key, value)
+class FlatList(list):
+    def append(self, value):
+        # Проверяем, является ли value итерируемым, но исключаем строки и байты (чтобы не разбивать их посимвольно)
+        if hasattr(value, '__iter__') and not isinstance(value, (str, bytes)):
+            for item in value:
+                super().append(item)  # Добавляем элементы по отдельности
+        else:
+            super().append(value)  # Обычное добавление, если не итерируемый объект
+'''
+'''
+from __future__ import annotations 
+class Contact_list(list["Contact"]): 
+    def search(self, name : str) -> list ["Contact"]: 
+        matching_contacts: list["Contact"] = [] 
+        for contact in self : 
+            if name in contact.name : 
+                matching_contacts.append(contact) 
+        return matching_contacts 
+
+class Contact: 
+    all_contacts = Contact_list() 
+    def __init__(self, name : str, email : str) -> None : 
+        self.name = name 
+        self.email = email 
+        Contact.all_contacts.append(self) 
+        def __repr__(self) -> str: 
+            return(f"{self.__class__.__name__}("f"{self.name!r},{self.email!r}"f")")'''
+
+#ex44
+'''
+class Animal():
+    def __init__(self, color, number_of_legs):
+        self.species = self.__class__.__name__
+        self.color = color
+        self.number_of_legs = number_of_legs
+    def __repr__(self):
+        return f'{self.color} {self.species},{self.number_of_legs} legs' 
+
+class Wolf(Animal):e
+    def __init__(self, color):
+        super().__init__(color, 4)
+
+class Sheep(Animal):
+    def __init__(self, color):
+        super().__init__(color, 4)
+
+class Snake(Animal):
+    def __init__(self, color):
+        super().__init__(color, 0)
+
+class Parrot(Animal):
+    def __init__(self, color):
+        super().__init__(color, 2)
+
+wolf = Wolf('black')
+sheep = Sheep('white')
+snake = Snake('brown')
+parrot = Parrot('green')'''
+'''
+Вместо того чтобы каждая класс-животное наследовался напрямую от Animal, определите несколько новых классов: 
+ZeroLeggedAnimal, TwoLeggedAnimal и FourLeggedAnimal, которые будут наследоваться от Animal и задавать количество ног
+для каждого экземпляра. Теперь измените Wolf, Sheep, Snake и Parrot так, чтобы они наследовались от одной из этих 
+новых классов, а не напрямую от Animal. Как это повлияет на определение методов?
+'''
+class Animal:
+    def __init__(self, color, number_of_legs):
+        self.species = self.__class__.__name__
+        self.color = color
+        self.number_of_legs = number_of_legs
+    
+    def __repr__(self):
+        return f'{self.color} {self.species}, {self.number_of_legs} legs'
+
+class ZeroLeggedAnimal(Animal):
+    def __init__(self, color):
+        super().__init__(color, 0)
+
+class TwoLeggedAnimal(Animal):
+    def __init__(self, color):
+        super().__init__(color, 2)
+
+class FourLeggedAnimal(Animal):
+    def __init__(self, color):
+        super().__init__(color, 4)
+
+class Wolf(FourLeggedAnimal):
+    def __init__(self, color):
+        super().__init__(color)
+
+class Sheep(FourLeggedAnimal):
+    def __init__(self, color):
+        super().__init__(color)
+
+class Snake(ZeroLeggedAnimal):
+    def __init__(self, color):
+        super().__init__(color)
+
+class Parrot(TwoLeggedAnimal):
+    def __init__(self, color):
+        super().__init__(color)
+
+'''
+Вместо написания метода __init__ в каждом подклассе можно использовать атрибут класса number_of_legs 
+в каждом из них — аналогично тому, как мы делали ранее с Bowl и BigBowl. Реализуйте иерархию таким образом. 
+Нужен ли вообще метод __init__ в каждом подклассе, или достаточно Animal.__init__?
+'''
+
+
+'''
+Допустим, метод __repr__ каждого класса должен выводить звук животного вместе со стандартной строкой, 
+которую мы реализовали ранее. Например, str(sheep) должно возвращать "Baa—white sheep, 4 legs". 
+Как можно использовать наследование, чтобы максимально повторно использовать код?
+'''
 
