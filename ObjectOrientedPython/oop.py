@@ -18,7 +18,7 @@ point2 = Point()
 pointl.reset() 
 point2.move(5, 0) 
 print(point2.calculate_distance(pointl))'''
-import datetime
+'''import datetime
 from typing import Optional
 import weakref
 class TrainingData:
@@ -76,8 +76,39 @@ class Hyperparameter:
         if not training_data:
             raise RuntimeError("broken weak reference")
         pass_count, fail_count = 0, 0
-        for sample in training_data.test
+        for sample in training_data.testing:
+            sample.classification = self.classify(sample)
+            if sample.matches():
+                pass_count += 1
+            else:
+                fail_count += 1
+        self.quality = pass_count / (pass_count + fail_count)
 s2 = Sample(sepal_length=5.1, sepal_width=3.5, petal_length=1.4, petal_width=0.2, species="Iris-setosa") 
 print(s2) 
 s2.classification = "wrong" 
-print(s2) 
+print(s2)'''
+
+
+class Contact:
+    all_contacts: list["Contact"] = []
+    def __init__(self, name: str, email: str) -> None:
+        self.name = name
+        self.email = email
+        Contact.all_contacts.append(self)
+    #def __repr__(self) -> str:
+        #return (
+           # f"{self.__class__.__name__}("f"{self.name!r}, {self.email!r}"f")"
+        #)
+class Supplier(Contact):
+    def order(self, order: "Order") -> None:
+        print(
+            "if this were real system we would send "f"'{order}' order to '{self.name}'"
+        )
+c_1=Contact("Dusty", "dusty@example.соm")
+c_2=Contact("Steve", "Steve@example.соm")
+c=Contact("Some Body", "somebody@example.net")
+s=Supplier("Sup Plier", "supplier@example.net")
+print(c.name, c.email, s.name, s.email)
+from pprint import pprint
+pprint(c.all_contacts)
+s.order("i need pliers")
