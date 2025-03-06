@@ -88,7 +88,7 @@ print(s2)
 s2.classification = "wrong" 
 print(s2)'''
 
-
+'''
 class Contact:
     all_contacts: list["Contact"] = []
     def __init__(self, name: str, email: str) -> None:
@@ -111,4 +111,21 @@ s=Supplier("Sup Plier", "supplier@example.net")
 print(c.name, c.email, s.name, s.email)
 from pprint import pprint
 pprint(c.all_contacts)
-s.order("i need pliers")
+s.order("i need pliers")'''
+class InvalidSampleError(ValueError):
+    """определения состояния невалидных данных, которые не могут быть об­работаны"""
+class KnownSample:
+    @classmethod
+    def from_dict(cls, row: dict[str, str]) -> "KnownSample":
+        if row["species"] not in {"Iris-setosa", "Iris-versicolour", "Iris-virginica"}:
+            raise InvalidSampleError(f"invalid species in {row!r}")
+        try:
+            return cls(
+                species=row["species"], 
+                sepal_length=float(row["sepal_length"]), 
+                sepal_width=float(row["sepal_width"]), 
+                petal_length=float(row["petal_length"]), 
+                petal_width=float(row["petal_width"]), 
+            )
+        except ValueError as ех : 
+            raise InvalidSampleError(f"invalid{row!r}") 
