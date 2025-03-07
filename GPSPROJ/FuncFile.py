@@ -46,7 +46,9 @@ class NmeaRepr:
         m = (abs(deg) - abs(d)) * 60
         return f"{abs(d):02}{m:07.4f}"
     
-    def represent(self, lat, lon, alt, bear):
+    @staticmethod
+    def represent(const_objs: "method") -> str:
+        lat, lon, alt, bear = const_objs.get_floats()
         import time
         a = NmeaRepr.dd_to_dms
     # Определение северного/южного и восточного/западного полушарий

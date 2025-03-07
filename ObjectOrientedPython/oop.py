@@ -112,6 +112,8 @@ print(c.name, c.email, s.name, s.email)
 from pprint import pprint
 pprint(c.all_contacts)
 s.order("i need pliers")'''
+
+'''
 class InvalidSampleError(ValueError):
     """определения состояния невалидных данных, которые не могут быть об­работаны"""
 class KnownSample:
@@ -128,4 +130,5 @@ class KnownSample:
                 petal_width=float(row["petal_width"]), 
             )
         except ValueError as ех : 
-            raise InvalidSampleError(f"invalid{row!r}") 
+            raise InvalidSampleError(f"invalid{row!r}")'''
+
