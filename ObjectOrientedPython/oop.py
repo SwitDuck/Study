@@ -132,3 +132,18 @@ class KnownSample:
         except ValueError as ех : 
             raise InvalidSampleError(f"invalid{row!r}")'''
 
+def trace(func):
+    def oncall(*args):
+        oncall.calls += 1
+        print('call %s to %s' %(oncall.calls, func.__name__))
+        return func(*args)
+    oncall.calls = 0
+    return oncall
+class C:
+    @trace
+    def out(self, a, b, c): 
+        return a + b + c
+
+X = C()
+print(X.out(1, 2, 3))
+print(X.out('a', 'b', 'c'))
