@@ -420,6 +420,7 @@ ZeroLeggedAnimal, TwoLeggedAnimal и FourLeggedAnimal, которые будут
 для каждого экземпляра. Теперь измените Wolf, Sheep, Snake и Parrot так, чтобы они наследовались от одной из этих 
 новых классов, а не напрямую от Animal. Как это повлияет на определение методов?
 '''
+'''
 class Animal:
     def __init__(self, color, number_of_legs):
         self.species = self.__class__.__name__
@@ -456,7 +457,7 @@ class Snake(ZeroLeggedAnimal):
 class Parrot(TwoLeggedAnimal):
     def __init__(self, color):
         super().__init__(color)
-
+'''
 '''
 Вместо написания метода __init__ в каждом подклассе можно использовать атрибут класса number_of_legs 
 в каждом из них — аналогично тому, как мы делали ранее с Bowl и BigBowl. Реализуйте иерархию таким образом. 
@@ -470,3 +471,18 @@ class Parrot(TwoLeggedAnimal):
 Как можно использовать наследование, чтобы максимально повторно использовать код?
 '''
 
+#ex46
+class MyEnumerate:
+    def __init__(self, data: str):
+        self.data = data
+        self.age = 0
+    def __iter__(self):
+        self.next_age = 1
+        return self
+    def __next__(self):
+        out_word = self.data
+        self.age += 1
+        return {self, out_word}
+
+for item in MyEnumerate('abc'):
+    print(item)
